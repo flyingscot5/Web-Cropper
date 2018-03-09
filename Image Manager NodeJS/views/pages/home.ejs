@@ -1,0 +1,17 @@
+<%- contentFor('body') %>
+<div class="jumbotron">
+  <img id="image" src="img/picture.jpg">
+
+    <script src="node_modules/cropperjs/dist/cropper.js">
+
+      var image = document.getElementById('image');
+
+      var cropper = new Cropper(image, {
+        crop: function(event) {
+          console.log(event.detail);
+        }
+      });
+
+      console.log(image);
+    </script>
+</div>

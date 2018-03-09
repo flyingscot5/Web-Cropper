@@ -1,0 +1,61 @@
+<html>
+
+<head>
+  <title>test</title>
+</head>
+
+<link href="public/css/styles.css" rel="stylesheet">
+<link href="node_modules/cropperjs/dist/cropper.css" rel="stylesheet">
+
+
+<body>
+
+
+  <div class="container">
+    <img id="image" src="public/img/picture.jpg">
+  </div>
+
+  <a id="downloadLnk" download="TestFile.jpg" href="">Download as image</a>
+
+  <button type="button" onclick="rotate()">rotate 90*</button>
+
+  <button >test</button>
+
+
+
+  <script src="node_modules/cropperjs/dist/cropper.js"></script>
+
+  <script>
+    var image = document.getElementById('image');
+
+    var croppedCanvasWidth;
+    var croppedCanvasHeight;
+
+    var cropper = new Cropper(image, {
+      crop: function(event) {
+        console.log(event.detail);
+
+        croppedCanvasWidth = event.detail.width;
+        croppedCanvasHeight = event.detail.height;
+      }
+    });
+
+    function download() {
+
+      var dt = cropper.getImageData().toDataURL('image/jpeg');
+      this.href = dt;
+    };
+    downloadLnk.addEventListener('click', download, false);
+
+
+
+    function rotate() {
+      cropper.rotate(90)
+    };
+  </script>
+
+
+
+</body>
+
+</html>
